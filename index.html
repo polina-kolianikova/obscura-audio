@@ -1,12 +1,186 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#161718"><meta name="description" content="OBSCURA acoustic objects. Move through a spatial sound wave, reveal the driver and shape a frequency study."><title>OBSCURA · Sound takes shape.</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle fill='%23161718' cx='32' cy='32' r='32'/%3E%3Ccircle fill='none' stroke='%23ddd9d2' stroke-width='3' cx='32' cy='32' r='18'/%3E%3Ccircle fill='%23d96839' cx='32' cy='32' r='5'/%3E%3C/svg%3E"><link rel="stylesheet" href="./styles.css"></head><body>
-<a class="skip" href="#controls">Skip to sound controls</a><div id="stage" aria-hidden="true"><div class="fallback-disc"></div></div><header><a href="#beginning" class="brand">OBSCURA<span>ACOUSTIC OBJECTS</span></a><span class="header-center">FORM FOLLOWS FREQUENCY.</span><button id="open-spec" class="note-button">Object notes <span aria-hidden="true">↗</span></button></header>
-<main><div id="experience"><section class="chapter hero" id="beginning"><div class="hero-eyebrow"><span>O / 01</span><span>AN EXPLORATION IN RESONANCE</span></div><h1>SOUND<br><em>TAKES SHAPE.</em></h1><div class="hero-foot"><p>A wave you can move through.<br>A machine you can see inside.</p><a href="#space" class="scroll-link">FOLLOW THE FREQUENCY <span aria-hidden="true">↓</span></a><span class="micro">01 / 04<br>SCROLL TO ENTER</span></div><span class="vertical-note">THE SPACE BETWEEN SILENCE AND EVERYTHING.</span></section>
-<section class="chapter passage" id="space"><div class="chapter-index">01 / THE WAVE</div><div class="passage-title"><h2>Go<br><em>deeper.</em></h2><p>The surface opens.<br>The signal carries you through.</p></div><span class="passage-note">ONE CONTINUOUS FIELD.<br>YOUR SCROLL SETS THE PACE.</span></section>
-<section class="chapter object" id="object"><div class="chapter-index">02 / THE OBJECT</div><h2>Nothing<br><em>between.</em></h2><p class="object-copy">A formed membrane. A rigid basket.<br>A magnet that turns a signal into movement.<br>Everything is here for what you hear.</p><span class="object-number">O / 01</span></section>
-<section class="chapter construction" id="construction"><div class="chapter-index">03 / OPEN THE SOUND</div><h2>A small<br><em>revelation.</em></h2><div class="construction-copy"><p>Take the driver apart.<br>Give the membrane a different character.<br>Make the study your own.</p><button id="save-open" class="line-button">Keep this frequency <span aria-hidden="true">↗</span></button></div><span class="micro concept">Independent acoustic concept.<br>No physical product is offered for sale.</span></section></div>
-<section class="closing"><span>OBSCURA / 2026</span><p>Quietly<br><em>extraordinary.</em></p><button id="closing-spec" class="line-button">Read the object notes ↗</button><footer><span>Independent concept by BlackStack Studio</span><a href="#beginning">RETURN TO THE SURFACE ↑</a></footer></section></main>
-<aside id="controls" class="controls" aria-label="Frequency study"><div class="frequency"><label for="frequency">FREQUENCY <output id="frequency-value">80 <small>HZ</small></output></label><input id="frequency" type="range" min="40" max="240" step="1" value="80"><div class="range-labels"><span>40 HZ</span><span>240 HZ</span></div></div><div class="character"><span class="control-label">WAVE CHARACTER</span><div role="group" aria-label="Wave character"><button data-character="pure" aria-pressed="true">Pure</button><button data-character="overtone" aria-pressed="false">Overtone</button><button data-character="pulse" aria-pressed="false">Pulse</button></div></div><div class="play-controls"><button id="animate" aria-pressed="false"><span aria-hidden="true">▷</span> Move the wave</button><button id="tone" aria-pressed="false"><span aria-hidden="true">◉</span> Tone off</button><span class="sound-note" id="sound-note">Sound begins only when you choose.</span></div></aside>
-<nav class="chapter-nav" aria-label="Sound chapters"><a href="#beginning" aria-label="Surface" aria-current="step"></a><a href="#space" aria-label="Wave"></a><a href="#object" aria-label="Object"></a><a href="#construction" aria-label="Construction"></a></nav>
-<div class="loader" id="loader"><span>O / 01</span><p>FINDING THE FREQUENCY</p></div>
-<dialog id="notes" aria-labelledby="notes-title"><div class="dialog-head"><span>OBSCURA / OBJECT NOTES</span><button id="close-notes" aria-label="Close object notes">×</button></div><h2 id="notes-title">Sound.<br><em>Made visible.</em></h2><p>O / 01 is an independently authored acoustic design study. The spatial membrane becomes a visible driver, then separates into its cone, basket and magnet.</p><dl><div><dt>Frequency study</dt><dd id="spec-frequency">80 Hz</dd></div><div><dt>Wave character</dt><dd id="spec-character">Pure</dd></div><div><dt>Assembly</dt><dd>Membrane, basket, magnet</dd></div><div><dt>Material direction</dt><dd>Graphite, aluminium, copper</dd></div></dl><button id="download" class="download">Download study notes <span aria-hidden="true">↓</span></button><p id="download-status" role="status"></p><p class="small-print">A visual and tonal exploration. This is not an acoustic measurement, a certified loudspeaker design or a product order.</p></dialog>
-<script type="module" src="./app.js"></script></body></html>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="theme-color" content="#161718" />
+    <meta
+      name="description"
+      content="OBSCURA acoustic objects. Move through a spatial sound wave, reveal the driver and shape a frequency study."
+    />
+    <title>OBSCURA · Sound takes shape.</title>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle fill='%23161718' cx='32' cy='32' r='32'/%3E%3Ccircle fill='none' stroke='%23ddd9d2' stroke-width='3' cx='32' cy='32' r='18'/%3E%3Ccircle fill='%23d96839' cx='32' cy='32' r='5'/%3E%3C/svg%3E"
+    />
+    <link
+      rel="stylesheet"
+      href="./styles.css?v=ba84ace842efae34731f07a14f9ae66aa929dfc9bfc92af06b1adf9feb12c435"
+    />
+  </head>
+  <body>
+    <a class="skip" href="#controls">Skip to sound controls</a>
+    <div id="stage" aria-hidden="true"><div class="fallback-disc"></div></div>
+    <header>
+      <a href="#beginning" class="brand">OBSCURA<span>ACOUSTIC OBJECTS</span></a
+      ><span class="header-center">FORM FOLLOWS FREQUENCY.</span
+      ><button id="open-spec" class="note-button">
+        Object notes <span aria-hidden="true">↗</span>
+      </button>
+    </header>
+    <main>
+      <div id="experience">
+        <section class="chapter hero" id="beginning">
+          <div class="hero-eyebrow">
+            <span>O / 01</span><span>AN EXPLORATION IN RESONANCE</span>
+          </div>
+          <h1>SOUND<br /><em>TAKES SHAPE.</em></h1>
+          <div class="hero-foot">
+            <p>
+              A wave you can move through.<br />A machine you can see inside.
+            </p>
+            <a href="#space" class="scroll-link"
+              >FOLLOW THE FREQUENCY <span aria-hidden="true">↓</span></a
+            ><span class="micro">01 / 04<br />SCROLL TO ENTER</span>
+          </div>
+          <span class="vertical-note"
+            >THE SPACE BETWEEN SILENCE AND EVERYTHING.</span
+          >
+        </section>
+        <section class="chapter passage" id="space">
+          <div class="chapter-index">01 / THE WAVE</div>
+          <div class="passage-title">
+            <h2>Go<br /><em>deeper.</em></h2>
+            <p>The surface opens.<br />The signal carries you through.</p>
+          </div>
+          <span class="passage-note"
+            >ONE CONTINUOUS FIELD.<br />YOUR SCROLL SETS THE PACE.</span
+          >
+        </section>
+        <section class="chapter object" id="object">
+          <div class="chapter-index">02 / THE OBJECT</div>
+          <h2>Nothing<br /><em>between.</em></h2>
+          <p class="object-copy">
+            A formed membrane. A rigid basket.<br />A magnet that turns a signal
+            into movement.<br />Everything is here for what you hear.
+          </p>
+          <span class="object-number">O / 01</span>
+        </section>
+        <section class="chapter construction" id="construction">
+          <div class="chapter-index">03 / OPEN THE SOUND</div>
+          <h2>A small<br /><em>revelation.</em></h2>
+          <div class="construction-copy">
+            <p>
+              Take the driver apart.<br />Give the membrane a different
+              character.<br />Make the study your own.
+            </p>
+            <button id="save-open" class="line-button">
+              Keep this frequency <span aria-hidden="true">↗</span>
+            </button>
+          </div>
+          <span class="micro concept"
+            >Independent acoustic concept.<br />No physical product is offered
+            for sale.</span
+          >
+        </section>
+      </div>
+      <section class="closing">
+        <span>OBSCURA / 2026</span>
+        <p>Quietly<br /><em>extraordinary.</em></p>
+        <button id="closing-spec" class="line-button">
+          Read the object notes ↗
+        </button>
+        <footer>
+          <span>Independent concept by BlackStack Studio</span
+          ><a href="#beginning">RETURN TO THE SURFACE ↑</a>
+        </footer>
+      </section>
+    </main>
+    <aside id="controls" class="controls" aria-label="Frequency study">
+      <div class="frequency">
+        <label for="frequency"
+          >FREQUENCY
+          <output id="frequency-value">80 <small>HZ</small></output></label
+        ><input
+          id="frequency"
+          type="range"
+          min="40"
+          max="240"
+          step="1"
+          value="80"
+        />
+        <div class="range-labels"><span>40 HZ</span><span>240 HZ</span></div>
+      </div>
+      <div class="character">
+        <span class="control-label">WAVE CHARACTER</span>
+        <div role="group" aria-label="Wave character">
+          <button data-character="pure" aria-pressed="true">Pure</button
+          ><button data-character="overtone" aria-pressed="false">
+            Overtone</button
+          ><button data-character="pulse" aria-pressed="false">Pulse</button>
+        </div>
+      </div>
+      <div class="play-controls">
+        <button id="animate" aria-pressed="false">
+          <span aria-hidden="true">▷</span> Move the wave</button
+        ><button id="tone" aria-pressed="false">
+          <span aria-hidden="true">◉</span> Tone off</button
+        ><span class="sound-note" id="sound-note"
+          >Sound begins only when you choose.</span
+        >
+      </div>
+    </aside>
+    <nav class="chapter-nav" aria-label="Sound chapters">
+      <a href="#beginning" aria-label="Surface" aria-current="step"></a
+      ><a href="#space" aria-label="Wave"></a
+      ><a href="#object" aria-label="Object"></a
+      ><a href="#construction" aria-label="Construction"></a>
+    </nav>
+    <div class="loader" id="loader">
+      <span>O / 01</span>
+      <p>FINDING THE FREQUENCY</p>
+    </div>
+    <dialog id="notes" aria-labelledby="notes-title">
+      <div class="dialog-head">
+        <span>OBSCURA / OBJECT NOTES</span
+        ><button id="close-notes" aria-label="Close object notes">×</button>
+      </div>
+      <h2 id="notes-title">Sound.<br /><em>Made visible.</em></h2>
+      <p>
+        O / 01 is an independently authored acoustic design study. The spatial
+        membrane becomes a visible driver, then separates into its cone, basket
+        and magnet.
+      </p>
+      <dl>
+        <div>
+          <dt>Frequency study</dt>
+          <dd id="spec-frequency">80 Hz</dd>
+        </div>
+        <div>
+          <dt>Wave character</dt>
+          <dd id="spec-character">Pure</dd>
+        </div>
+        <div>
+          <dt>Assembly</dt>
+          <dd>Membrane, basket, magnet</dd>
+        </div>
+        <div>
+          <dt>Material direction</dt>
+          <dd>Graphite, aluminium, copper</dd>
+        </div>
+      </dl>
+      <button id="download" class="download">
+        Download study notes <span aria-hidden="true">↓</span>
+      </button>
+      <p id="download-status" role="status"></p>
+      <p class="small-print">
+        A visual and tonal exploration. This is not an acoustic measurement, a
+        certified loudspeaker design or a product order.
+      </p>
+    </dialog>
+    <script
+      type="module"
+      src="./app.js?v=41f6e574b69ef93d2c666d0f3f7d167cd1a71a59d7baac52387826be8d07f2c6"
+    ></script>
+  </body>
+</html>
