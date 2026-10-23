@@ -1,4 +1,9 @@
+import { phone, mobileFrames, mobileFallback } from "./mobile-stage.js?v=fe1aadeb82b2d227211afe295f4325f4aa5c76dc5fc4886b79c607292047e53d";
 import * as THREE from "./assets/vendor/three.module.js?v=ce1fa418de16a19495a9f72495580e3015d7745c296d3ce0485897f902ddedfb";
+
+const drawFrames = mobileFrames("#experience .chapter", ["h1", ".passage-title", "h2", "h2"]);
+
+mobileFallback(".fallback-disc");
 
 const $ = (s) => document.querySelector(s),
   clamp = THREE.MathUtils.clamp,
@@ -182,7 +187,7 @@ measure();
 let renderer,
   frames = 0;
 try {
-  const mobileAtStart = innerWidth < 800;
+  const mobileAtStart = phone.matches;
   renderer = new THREE.WebGLRenderer({
     antialias: true,
     powerPreference: "high-performance",
@@ -440,7 +445,7 @@ try {
     const dt = previous ? Math.min((now - previous) / 1000, 0.05) : 1 / 60;
     previous = now;
     lastRender = now;
-    progress = reduced.matches
+    progress = reduced.matches || phone.matches
       ? target
       : mix(progress, target, 1 - Math.exp(-9 * dt));
     if (live) phase += dt * 1.25;
@@ -451,7 +456,7 @@ try {
       t = smooth(0, 1, p - i),
       a = poses[i],
       b = poses[i + 1],
-      mobile = innerWidth < 800;
+      mobile = phone.matches;
     const opening = smooth(0.2, 0.86, p) * (1 - smooth(1.12, 1.85, p)),
       shape = smooth(1.25, 1.95, p),
       explode = smooth(2.25, 2.95, p);
@@ -481,7 +486,7 @@ try {
     let x = mix(a.c[0], b.c[0], t),
       y = mix(a.c[1], b.c[1], t),
       z = mix(a.c[2], b.c[2], t);
-    if (mobile && p < 0.7) z *= 1.22;
+    if (mobile && p < 0.7) z *= 0.96;
     if (mobile && p > 1.5) {
       x *= 1.15;
       z *= 1.15;
@@ -494,10 +499,10 @@ try {
     );
     assembly.rotation.z = mix(-0.08, 0.04, shape);
     const hero = $(".hero h1");
-    hero.style.opacity = String(1 - smooth(0.04, 0.65, p));
-    hero.style.transform = `translate3d(0,${-p * 80}px,0)`;
+    hero.style.opacity = mobile ? "1" : String(1 - smooth(0.04, 0.65, p));
+    hero.style.transform = mobile ? "none" : `translate3d(0,${-p * 80}px,0)`;
     const start = performance.now();
-    renderer.render(scene, camera);
+    const visibleFrames = drawFrames(renderer, scene, camera);
     frames++;
     if (performance.now() - start > 23) slow++;
     else slow = Math.max(0, slow - 1);
@@ -508,7 +513,7 @@ try {
     }
     const moving = Math.abs(progress - target) > 0.0003;
     diagnostics(live || moving ? "active" : "idle");
-    if (live || moving) raf = requestAnimationFrame(render);
+    if ((live && (!phone.matches || visibleFrames > 0)) || moving) raf = requestAnimationFrame(render);
   }
   invalidate = () => {
     if (!raf && !document.hidden && visible) {
@@ -519,7 +524,7 @@ try {
   addEventListener("resize", () => {
     camera.aspect = innerWidth / innerHeight;
     camera.updateProjectionMatrix();
-    quality = Math.min(devicePixelRatio, innerWidth < 800 ? 1 : 1.4);
+    quality = Math.min(devicePixelRatio, phone.matches ? 1 : 1.4);
     renderer.setPixelRatio(quality);
     renderer.setSize(innerWidth, innerHeight, false);
     measure();
@@ -577,3 +582,18 @@ try {
   document.documentElement.dataset.renderMode = "idle";
   console.warn("Static acoustic view enabled.", error.message);
 }
+
+const phoneControls = document.querySelector(".controls"),
+  controlsParent = phoneControls.parentNode, controlsNext = phoneControls.nextSibling;
+function placePhoneControls() {
+  if (phone.matches) document.querySelector(".hero .mobile-scene-slot").after(phoneControls);
+  else controlsParent.insertBefore(phoneControls, controlsNext);
+  dispatchEvent(new Event("resize"));
+}
+phone.addEventListener("change", placePhoneControls);
+placePhoneControls();
+
+document.fonts.ready.then(() => {
+  measure();
+  invalidate();
+});

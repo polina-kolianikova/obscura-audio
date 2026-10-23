@@ -24,3 +24,7 @@ The DOM exposes actual rendered frame count, calls, triangles, DPR and mode thro
 If WebGL cannot initialize, the local CSS acoustic illustration appears while the configuration and notes remain available. The object is a design concept, not a certified loudspeaker, acoustic measurement or product in production.
 
 Independent concept by BlackStack Studio, 2026.
+
+## iPhone Safari composition, October2026
+
+The mobile experience now reserves explicit photographic or live-model frames in normal document flow. It does not move the hero object into arbitrary gaps between text blocks. Header, content, forms and footer share the mobile reading grid; desktop retains its cinematic composition. Exact local static font weights avoid variable-default differences across browser engines. Relevant touch interactions, portrait/landscape transitions and live scene visibility were checked in Playwright WebKit. This is browser emulation, not a physical iPhone test.
