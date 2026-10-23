@@ -1042,3 +1042,9 @@ dialog .small-print {
     font-size: 14vh;
   }
 }
+
+@media (max-width:700px) {
+ .object-copy,.construction-copy {background:rgba(15,16,18,.92);padding:18px 20px;z-index:5;}
+ .object-copy {max-width:calc(100% - 40px);}
+ .construction-copy p {color:#e4e4de;}
+}
